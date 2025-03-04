@@ -3,6 +3,7 @@ import Carousel from "@/components/TechCarousel";
 import Courses from "@/components/Courses";
 import Blogs from "@/components/Blogs";
 import QuoteRequestForm from "@/components/QuoteRequestForm";
+import CategoryGrid from "@/components/CategoryGrid";
 
 export default function Home() {
   const images = ["/images/banner-snake-chain.gif"];
@@ -60,9 +61,52 @@ export default function Home() {
       link: "/course/react",
     },
   ];
+
+  const categories = [
+    {
+      title: "Phòng khách",
+      imageUrl: "/images/category/phongkhach.png",
+      link: "/category/living-room",
+    },
+    {
+      title: "Phòng ngủ",
+      imageUrl: "/images/category/phongngu.png",
+      link: "/category/bedroom",
+    },
+    {
+      title: "Phòng ăn và bếp",
+      imageUrl: "/images/category/phongan.png",
+      link: "/category/kitchen",
+    },
+    {
+      title: "Phòng làm việc",
+      imageUrl: "/images/category/phonglamviec.png",
+      link: "/category/workspace",
+    },
+  ];
   return (
     <div>
-      <Slider images={images} />
+      <Slider
+        images={[
+          {
+            desktop: "/images/slider/slider1_desktop.png",
+            tablet: "/images/slider/slider1_tablet.png",
+            mobile: "/images/slider/slider1_mobile.png",
+          },
+          {
+            desktop: "/images/slider/slider2_desktop.png",
+            tablet: "/images/slider/slider2_tablet.png",
+            mobile: "/images/slider/slider2_mobile.png",
+          },
+          {
+            desktop: "/images/slider/slider3_desktop.png",
+            tablet: "/images/slider/slider3_tablet.png",
+            mobile: "/images/slider/slider3_mobile.png",
+          },
+        ]}
+      />
+
+      <CategoryGrid categories={categories} />
 
       <Courses
         courses={courses}

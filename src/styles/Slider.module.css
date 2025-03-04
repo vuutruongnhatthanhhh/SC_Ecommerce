@@ -11,28 +11,12 @@
   font-size: 1.5rem;
 }
 
-@media (max-width: 1380px) {
-  .sliderTitle {
-    font-size: 1.8rem;
-  }
+/* minwidth 768: 1920 x 750 
+  maxwidth 767: 1500 x1662
+*/
 
-  .sliderText {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .sliderTitle {
-    font-size: 1.5rem;
-  }
-
-  .sliderText {
-    font-size: 0.825rem;
-  }
-}
-
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
   .sliderWrapper {
     display: none;
   }
-}
+} */
