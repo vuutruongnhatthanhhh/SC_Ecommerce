@@ -4,6 +4,7 @@ import Courses from "@/components/Courses";
 import Blogs from "@/components/Blogs";
 import QuoteRequestForm from "@/components/QuoteRequestForm";
 import CategoryGrid from "@/components/CategoryGrid";
+import ProductCarousel from "@/components/ProductCarousel";
 
 export default function Home() {
   const images = ["/images/banner-snake-chain.gif"];
@@ -84,6 +85,59 @@ export default function Home() {
       link: "/category/workspace",
     },
   ];
+
+  const products = [
+    {
+      id: 1,
+      name: "Bát cơm sứ trắng hoa",
+      imageUrl: "/images/bowl1.jpg",
+      price: 45000,
+    },
+    {
+      id: 2,
+      name: "Bát đĩa màu trắng WIN",
+      imageUrl: "/images/bowl2.jpg",
+      price: 6450,
+      oldPrice: 12900,
+    },
+    {
+      id: 3,
+      name: "Bát mì gốm sứ ANNE",
+      imageUrl: "/images/bowl3.jpg",
+      price: 79000,
+    },
+    {
+      id: 4,
+      name: "Bát mì trắng hoa tiết",
+      imageUrl: "/images/bowl4.jpg",
+      price: 129000,
+    },
+    {
+      id: 5,
+      name: "Bộ kẹp miệng túi",
+      imageUrl: "/images/clip.jpg",
+      price: 59000,
+    },
+    {
+      id: 6,
+      name: "Bát mì gốm sứ ANNE",
+      imageUrl: "/images/bowl3.jpg",
+      price: 79000,
+    },
+    {
+      id: 7,
+      name: "Bát mì trắng hoa tiết",
+      imageUrl: "/images/bowl4.jpg",
+      price: 129000,
+    },
+    {
+      id: 8,
+      name: "Bộ kẹp miệng túi",
+      imageUrl: "/images/clip.jpg",
+      price: 59000,
+    },
+  ];
+
   return (
     <div>
       <Slider
@@ -107,6 +161,13 @@ export default function Home() {
       />
 
       <CategoryGrid categories={categories} />
+      <div className="p-4">
+        <ProductCarousel
+          title="Đồ bếp nhập khẩu cao cấp"
+          products={products}
+          backgroundColor="bg-[#ffeef0]"
+        />
+      </div>
 
       <Courses
         courses={courses}
