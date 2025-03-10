@@ -5,6 +5,12 @@ import Blogs from "@/components/Blogs";
 import QuoteRequestForm from "@/components/QuoteRequestForm";
 import CategoryGrid from "@/components/CategoryGrid";
 import ProductCarousel from "@/components/ProductCarousel";
+import CouponList from "@/components/CouponList";
+import CategorySlider from "@/components/CategorySlider";
+import FeaturedProducts from "@/components/FeaturedProducts";
+import SaleBanner from "@/components/SaleBanner";
+import FeaturedProductRight from "@/components/FeaturedProductRight";
+import LatestPosts from "@/components/LatestPost";
 
 export default function Home() {
   const images = ["/images/banner-snake-chain.gif"];
@@ -90,51 +96,219 @@ export default function Home() {
     {
       id: 1,
       name: "Bát cơm sứ trắng hoa",
-      imageUrl: "/images/bowl1.jpg",
+      imageUrl: "/images/product/product1.png",
+      images: [
+        "/images/product/product1.png",
+        "/images/product/product2.png",
+        "/images/product/product3.png",
+      ],
       price: 45000,
     },
     {
       id: 2,
       name: "Bát đĩa màu trắng WIN",
-      imageUrl: "/images/bowl2.jpg",
+      imageUrl: "/images/product/product2.png",
+      images: [
+        "/images/product/product1.png",
+        "/images/product/product2.png",
+        "/images/product/product3.png",
+      ],
       price: 6450,
       oldPrice: 12900,
     },
     {
       id: 3,
       name: "Bát mì gốm sứ ANNE",
-      imageUrl: "/images/bowl3.jpg",
+      imageUrl: "/images/product/product3.png",
+      images: [
+        "/images/product/product1.png",
+        "/images/product/product2.png",
+        "/images/product/product3.png",
+      ],
       price: 79000,
     },
     {
       id: 4,
       name: "Bát mì trắng hoa tiết",
-      imageUrl: "/images/bowl4.jpg",
+      imageUrl: "/images/product/product4.png",
+      images: [
+        "/images/product/product1.png",
+        "/images/product/product2.png",
+        "/images/product/product3.png",
+      ],
       price: 129000,
     },
     {
       id: 5,
       name: "Bộ kẹp miệng túi",
-      imageUrl: "/images/clip.jpg",
+      imageUrl: "/images/product/product5.png",
+      images: [
+        "/images/product/product1.png",
+        "/images/product/product2.png",
+        "/images/product/product3.png",
+      ],
       price: 59000,
     },
     {
       id: 6,
       name: "Bát mì gốm sứ ANNE",
-      imageUrl: "/images/bowl3.jpg",
+      imageUrl: "/images/product/product1.png",
+      images: [
+        "/images/product/product1.png",
+        "/images/product/product2.png",
+        "/images/product/product3.png",
+      ],
       price: 79000,
     },
     {
       id: 7,
       name: "Bát mì trắng hoa tiết",
-      imageUrl: "/images/bowl4.jpg",
+      imageUrl: "/images/product/product2.png",
+      images: [
+        "/images/product/product1.png",
+        "/images/product/product2.png",
+        "/images/product/product3.png",
+      ],
       price: 129000,
     },
     {
       id: 8,
       name: "Bộ kẹp miệng túi",
-      imageUrl: "/images/clip.jpg",
+      imageUrl: "/images/product/product3.png",
+      images: [
+        "/images/product/product1.png",
+        "/images/product/product2.png",
+        "/images/product/product3.png",
+      ],
       price: 59000,
+    },
+  ];
+
+  const products2 = [
+    {
+      id: 1,
+      name: "Bàn học JOY 60 sự lựa chọn hoàn hảo cho trẻ nhỏ",
+      imageUrl: "/images/product/product6.png",
+      images: [
+        "/images/product/product6.png",
+        "/images/product/product7.png",
+        "/images/product/product8.png",
+      ],
+      price: 45000,
+    },
+    {
+      id: 2,
+      name: "Bàn học JOY 80",
+      imageUrl: "/images/product/product7.png",
+      images: [
+        "/images/product/product6.png",
+        "/images/product/product7.png",
+        "/images/product/product8.png",
+      ],
+      price: 45000,
+    },
+    {
+      id: 3,
+      name: "Bàn học liền giá sách",
+      imageUrl: "/images/product/product8.png",
+      images: [
+        "/images/product/product6.png",
+        "/images/product/product7.png",
+        "/images/product/product8.png",
+      ],
+      price: 45000,
+    },
+    {
+      id: 4,
+      name: "Bàn làm việc liền giá sách",
+      imageUrl: "/images/product/product9.png",
+      images: [
+        "/images/product/product6.png",
+        "/images/product/product7.png",
+        "/images/product/product9.png",
+      ],
+      price: 45000,
+    },
+    {
+      id: 5,
+      name: "Ghê ngồi xoay nâng hạ",
+      imageUrl: "/images/product/product10.png",
+      images: [
+        "/images/product/product6.png",
+        "/images/product/product7.png",
+        "/images/product/product10.png",
+      ],
+      price: 45000,
+    },
+    {
+      id: 6,
+      name: "Bàn học JOY 60",
+      imageUrl: "/images/product/product6.png",
+      images: [
+        "/images/product/product6.png",
+        "/images/product/product7.png",
+        "/images/product/product8.png",
+      ],
+      price: 45000,
+    },
+    {
+      id: 7,
+      name: "Bàn học JOY 80",
+      imageUrl: "/images/product/product7.png",
+      images: [
+        "/images/product/product6.png",
+        "/images/product/product7.png",
+        "/images/product/product8.png",
+      ],
+      price: 45000,
+    },
+    {
+      id: 8,
+      name: "Bàn học liền giá sách",
+      imageUrl: "/images/product/product8.png",
+      images: [
+        "/images/product/product6.png",
+        "/images/product/product7.png",
+        "/images/product/product8.png",
+      ],
+      price: 45000,
+    },
+  ];
+
+  const products3 = [
+    {
+      id: 1,
+      name: "Móc treo rèm phòng tắm RING",
+      price: "20,300₫",
+      oldPrice: "29,000₫",
+      discount: "-30%",
+      imageUrl: "/images/product/product11.webp",
+    },
+    {
+      id: 2,
+      name: "Cọ Lưng Kèm Bông Tắm Nhựa 2 Đầu SUSANA",
+      price: "89,000₫",
+      imageUrl: "/images/product/product12.webp",
+    },
+    {
+      id: 3,
+      name: "Thảm Phòng Tắm Chất Dãn Hồi Nhiệt Dẻo XYLIA",
+      price: "169,000₫",
+      imageUrl: "/images/product/product13.webp",
+    },
+    {
+      id: 4,
+      name: "Ly Đựng Bàn Chải Nhựa Xanh DARK MINT",
+      price: "49,000₫",
+      imageUrl: "/images/product/product14.webp",
+    },
+    {
+      id: 5,
+      name: "Rèm Tắm DARK MINT L180xW180cm",
+      price: "127,200₫",
+      oldPrice: "159,000₫",
+      discount: "-20%",
+      imageUrl: "/images/product/product15.webp",
     },
   ];
 
@@ -168,16 +342,28 @@ export default function Home() {
           backgroundColor="bg-[#ffeef0]"
         />
       </div>
+      <div className="p-4">
+        <CouponList />
 
-      <Courses
-        courses={courses}
-        title="Khóa học nổi bật"
-        allCoursesLink="#allcourse"
-        showButton={true}
-      />
-      <QuoteRequestForm />
+        <ProductCarousel
+          title="Back To School - Up To 60%"
+          products={products2}
+          backgroundColor=""
+        />
 
-      <Blogs blogs={blogs} title="Blog" allBlogLink="/blog" showButton={true} />
+        <CategorySlider />
+        <FeaturedProducts />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 max-w-[1400px] mx-auto mt-10">
+          <SaleBanner imageUrl="/images/salebanner/salebanner1.webp" />
+          <SaleBanner imageUrl="/images/salebanner/salebanner2.webp" />
+        </div>
+        <FeaturedProductRight
+          title="Chút xinh xắn cho nhà tắm"
+          products={products3}
+          bannerImageUrl="/images/feature/banner-right.webp"
+        />
+        <LatestPosts />
+      </div>
     </div>
   );
 }
