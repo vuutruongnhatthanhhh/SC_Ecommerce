@@ -10,10 +10,20 @@ import { useAuth } from "@/context/AuthContext";
 import SearchBar from "@/components/SearchBar";
 import NavCategories from "@/components/NavCategories";
 
+type MenuDataType = {
+  [key: string]: {
+    name: string;
+    link?: string;
+    subMenu?: string;
+    back?: boolean;
+  }[];
+};
+
 const Header: React.FC = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [currentMenu, setCurrentMenu] = useState<keyof MenuDataType>("main");
 
   const menuRef = useRef<HTMLDivElement | null>(null);
   const userMenuRef = useRef<HTMLDivElement | null>(null);
@@ -23,9 +33,14 @@ const Header: React.FC = () => {
   const { user, logoutUser } = useAuth();
 
   // Đóng dropdown khi chuyển route
-  useEffect(() => {
-    setDropdownVisible(false);
-  }, [pathname]);
+  // useEffect(() => {
+  //   setDropdownVisible(false);
+  // }, [pathname]);
+
+  const handleClickMenu = () => {
+    setDropdownVisible(!isDropdownVisible);
+    // setCurrentMenu("main");
+  };
 
   // Đóng dropdown khi click ra ngoài
   useEffect(() => {
@@ -36,11 +51,12 @@ const Header: React.FC = () => {
         !toggleButtonRef.current?.contains(event.target as Node)
       ) {
         setDropdownVisible(false);
+        // setCurrentMenu("main");
       }
     };
-    document.addEventListener("click", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -56,15 +72,34 @@ const Header: React.FC = () => {
     };
 
     if (isUserMenuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("click", handleClickOutside);
     } else {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isUserMenuOpen]);
+
+  const menuData: MenuDataType = {
+    main: [
+      { name: "Giới thiệu", link: "/about" },
+      { name: "Khóa học", subMenu: "courses" },
+      { name: "Thiết kế website", link: "/website" },
+      { name: "Thiết kế ứng dụng di động", link: "/mobile" },
+      { name: "Bảng giá dịch vụ", link: "/price" },
+      { name: "Source Code", link: "/sourcecode" },
+      { name: "Blog", link: "/blog" },
+      { name: "Liên hệ", link: "/contact" },
+    ],
+    courses: [
+      { name: "Quay lại", back: true },
+      { name: "Lập trình Frontend", link: "/courses/frontend" },
+      { name: "Lập trình Backend", link: "/courses/backend" },
+      { name: "Lập trình Mobile", link: "/courses/mobile" },
+    ],
+  };
 
   return (
     <>
@@ -82,7 +117,7 @@ const Header: React.FC = () => {
             <button
               ref={toggleButtonRef}
               className="text-white"
-              onClick={() => setDropdownVisible(!isDropdownVisible)}
+              onClick={handleClickMenu}
             >
               ☰
             </button>
@@ -149,42 +184,53 @@ const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Menu mobile dropdown (slide ra bên phải) */}
+        {/* Menu mobile dropdown */}
         <div
-          className={`md:hidden fixed top-16 left-4 bg-[#c4123f] text-white text-sm rounded-md shadow-lg  z-10 transform transition-all duration-300 ${
+          className={`md:hidden fixed top-16 left-0 bg-[#c4123f] text-white text-sm w-64 h-full shadow-lg z-10 transform transition-all duration-300 ${
             isDropdownVisible
               ? "opacity-100 translate-x-0"
               : "opacity-0 -translate-x-full pointer-events-none"
           }`}
           ref={menuRef}
         >
-          <Link href="/about" className="block px-6 py-3 transition-colors">
-            Giới thiệu
-          </Link>
-          <Link href="/course" className="block px-6 py-3  transition-colors">
-            Khóa học
-          </Link>
-          <Link href="/website" className="block px-6 py-3  transition-colors">
-            Thiết kế website
-          </Link>
-          <Link href="/mobile" className="block px-6 py-3 transition-colors">
-            Thiết kế ứng dụng di động
-          </Link>
-          <Link href="/price" className="block px-6 py-3 transition-colors">
-            Bảng giá dịch vụ
-          </Link>
-          <Link
-            href="/sourcecode"
-            className="block px-6 py-3 transition-colors"
-          >
-            Source Code
-          </Link>
-          <Link href="/blog" className="block px-6 py-3  transition-colors">
-            Blog
-          </Link>
-          <Link href="/contact" className="block px-6 py-3  transition-colors">
-            Liên hệ
-          </Link>
+          <ul onClick={(e) => e.stopPropagation()}>
+            {menuData[currentMenu].map((item, index) => (
+              <li key={index} className="border-b border-gray-500">
+                {item.back ? (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
+                      setCurrentMenu("main");
+                    }}
+                    className="block w-full text-left px-6 py-3 text-white bg-gray-700 hover:bg-gray-600"
+                  >
+                    ← Quay lại
+                  </button>
+                ) : item.subMenu ? (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation(); // Ngăn sự kiện lan ra ngoài
+                      setCurrentMenu(item.subMenu!);
+                    }}
+                    className="block w-full text-left px-6 py-3 hover:bg-gray-600"
+                  >
+                    {item.name} →
+                  </button>
+                ) : (
+                  <Link
+                    href={item.link!}
+                    className="block px-6 py-3 hover:bg-gray-600"
+                    onClick={(e) => {
+                      e.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
+                      setDropdownVisible(false); // Chỉ đóng menu khi click vào link thực sự
+                    }}
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/*

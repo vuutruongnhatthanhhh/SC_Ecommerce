@@ -59,10 +59,10 @@ const LatestPosts: React.FC = () => {
             <img
               src={post.image}
               alt={post.title}
-              className="w-full h-80 object-contain"
+              className="w-full h-80 object-contain cursor-pointer"
             />
             <div className="p-4">
-              <h3 className="text-lg font-semibold text-[#C31425] line-clamp-2 overflow-hidden text-ellipsis">
+              <h3 className="text-lg font-semibold text-[#C31425] line-clamp-2 overflow-hidden text-ellipsis cursor-pointer">
                 {post.title}
               </h3>
               <p className="text-gray-600 text-sm mt-2 line-clamp-2 overflow-hidden text-ellipsis">

@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Head from "next/head";
 import config from "@/config";
-import ZaloContact from "@/components/ZaloContact";
+import ContactBox from "@/components/ContactBox";
 import { AuthProvider } from "@/context/AuthContext";
 import NavCategories from "@/components/NavCategories";
 
@@ -41,7 +41,7 @@ export default function RootLayout({
           <Header />
 
           <main className="flex-grow w-full"> {children}</main>
-          <ZaloContact />
+          <ContactBox />
 
           <Footer />
         </AuthProvider>
